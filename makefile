@@ -1,5 +1,6 @@
 CC = g++
-CFLAGS = -Wall -g -Ihome/iza/MESTRADO/gnss-cpp/functions
+CFLAGS = -g -Ihome/iza/MESTRADO/gnss-cpp/functions
+#CFLAGS = -Wall -g -Ihome/iza/MESTRADO/gnss-cpp/functions
 
 main: main.o Parse_GPS_obs_from_RINEX.o Date_to_TOW.o RINEX.o
 	$(CC) $(CFLAGS) -o main main.o Parse_GPS_obs_from_RINEX.o Date_to_TOW.o RINEX.o
