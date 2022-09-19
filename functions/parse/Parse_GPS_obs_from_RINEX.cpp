@@ -2,8 +2,8 @@
 #include <fstream>
 #include <algorithm>
 #include "Parse_GPS_obs_from_RINEX.hpp"
-#include "RINEX.hpp"
-#include "Date_to_TOW.hpp"
+#include "../structs/RINEX.hpp"
+#include "../Date_to_TOW.hpp"
 
 using namespace std;
 

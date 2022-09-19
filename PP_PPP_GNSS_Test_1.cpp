@@ -1,7 +1,7 @@
 #include<iostream>
 
-#include "Parse_GPS_obs_from_RINEX.hpp"
-#include "Date_to_TOW.hpp"
+#include "functions/parse/Parse_GPS_obs_from_RINEX.hpp"
+#include "functions/Date_to_TOW.hpp"
 
 int main() {
 	string obs_name = "MGLA362p.rxo";

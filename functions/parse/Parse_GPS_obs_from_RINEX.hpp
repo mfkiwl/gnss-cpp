@@ -2,7 +2,7 @@
 #define Parse_GPS_obs_from_RINEX_HPP
 
 #include <string>
-#include "RINEX.hpp"
+#include "../structs/RINEX.hpp"
 
 using namespace std;
 
