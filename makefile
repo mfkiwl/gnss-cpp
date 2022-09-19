@@ -1,11 +1,9 @@
 CC = g++
 CFLAGS = -Wall -g -Ihome/iza/MESTRADO/gnss-cpp/functions
 
-main: $(OFILES)
-	$(CXX) $(OFILES)
-	rm -f *.o *~ 
-
 main: main.o Parse_GPS_obs_from_RINEX.o Date_to_TOW.o RINEX.o
+	$(CC) $(CFLAGS) -o main main.o Parse_GPS_obs_from_RINEX.o Date_to_TOW.o RINEX.o
+	rm -f *.o functions/*.o functions/parse/*.o functions/structs/*.o
 
 main.o: PP_PPP_GNSS_Test_1.cpp functions/parse/Parse_GPS_obs_from_RINEX.o functions/Date_to_TOW.o
 	$(CC) $(CFLAGS) -c PP_PPP_GNSS_Test_1.cpp -o main.o
