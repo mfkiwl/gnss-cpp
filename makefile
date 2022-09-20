@@ -6,12 +6,14 @@ GNSS_Test_11: GNSS_Test_11.o \
 	Parse_GPS_obs_from_RINEX.o \
 	Parse_GPS_nav_from_RINEX.o \
 	Date_to_TOW.o \
+	pv_ECEF_to_NED.o \
 	RINEX_OBS.o \
 	RINEX_NAV.o
 	$(CC) $(CFLAGS) -o GNSS_Test_11 GNSS_Test_11.o \
 		Parse_GPS_obs_from_RINEX.o \
 		Parse_GPS_nav_from_RINEX.o \
 		Date_to_TOW.o \
+		pv_ECEF_to_NED.o \
 		RINEX_OBS.o \
 		RINEX_NAV.o
 	rm -f *.o functions/*.o functions/parse/*.o functions/structs/*.o
@@ -20,12 +22,14 @@ PP_PPP_GNSS_Test_1: PP_PPP_GNSS_Test_1.o \
 	Parse_GPS_obs_from_RINEX.o \
 	Parse_GPS_nav_from_RINEX.o \
 	Date_to_TOW.o \
+	pv_ECEF_to_NED.o \
 	RINEX_OBS.o \
 	RINEX_NAV.o
 	$(CC) $(CFLAGS) -o PP_PPP_GNSS_Test_1 PP_PPP_GNSS_Test_1.o \
 		Parse_GPS_obs_from_RINEX.o \
 		Parse_GPS_nav_from_RINEX.o \
 		Date_to_TOW.o \
+		pv_ECEF_to_NED.o \
 		RINEX_OBS.o \
 		RINEX_NAV.o
 	rm -f *.o functions/*.o functions/parse/*.o functions/structs/*.o
@@ -50,6 +54,9 @@ Parse_GPS_nav_from_RINEX.o: functions/parse/Parse_GPS_nav_from_RINEX.cpp functio
 
 Date_to_TOW.o: functions/Date_to_TOW.cpp
 	$(CC) $(CFLAGS) -c functions/Date_to_TOW.cpp
+
+pv_ECEF_to_NED.o: functions/pv_ECEF_to_NED.cpp
+	$(CC) $(CFLAGS) -c functions/pv_ECEF_to_NED.cpp
 
 RINEX_OBS.o: functions/structs/RINEX_OBS.cpp
 	$(CC) $(CFLAGS) -c functions/structs/RINEX_OBS.cpp

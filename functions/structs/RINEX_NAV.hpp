@@ -18,6 +18,7 @@ class RINEX_NAV {
 			double beta_1;
 			double beta_2;
 			double beta_3;
+			int StatusFlag;
 		} iono;
 
 		struct {
