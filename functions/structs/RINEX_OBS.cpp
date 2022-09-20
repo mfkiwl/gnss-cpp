@@ -1,6 +1,6 @@
-#include "RINEX.hpp"
+#include "RINEX_OBS.hpp"
 
-void RINEX::setHdrType(string type[][5], int lines) {
+void RINEX_OBS::setHdrType(string type[][5], int lines) {
 	this->hdr.type = new vector<string>[lines];
 
 	for (int i = 0; i<lines; i++) {
@@ -8,7 +8,7 @@ void RINEX::setHdrType(string type[][5], int lines) {
 	}
 }
 
-void RINEX::setTotalSvNum(int totalSVnum[], int size) {
+void RINEX_OBS::setTotalSvNum(int totalSVnum[], int size) {
 	this->hdr.total_SVnum.resize(size);
 
 	for (int i = 0; i<size; i++) {
@@ -16,7 +16,7 @@ void RINEX::setTotalSvNum(int totalSVnum[], int size) {
 	}
 }
 
-void RINEX::setTimeMessage(int y[], int m[], int d[], int h[], int min[], int s[], int itow[], int size) {
+void RINEX_OBS::setTimeMessage(int y[], int m[], int d[], int h[], int min[], int s[], int itow[], int size) {
 	this->obs.year.resize(size);	
 	this->obs.month.resize(size);	
 	this->obs.day.resize(size);	
@@ -36,7 +36,7 @@ void RINEX::setTimeMessage(int y[], int m[], int d[], int h[], int min[], int s[
 	}
 }
 
-void RINEX::setSvNumLx(int numSV_L1[], int numSV_L2[], int numSV_L5[],int size) {
+void RINEX_OBS::setSvNumLx(int numSV_L1[], int numSV_L2[], int numSV_L5[],int size) {
 	this->obs.numSV_L1.resize(size);
 	this->obs.numSV_L2.resize(size);
 	this->obs.numSV_L5.resize(size);
@@ -48,7 +48,7 @@ void RINEX::setSvNumLx(int numSV_L1[], int numSV_L2[], int numSV_L5[],int size) 
 	}
 }
 
-void RINEX::setObsOut(int sv_L1[][32], double pr_L1[][32],double precise_pr_L1[][32],double cp_L1[][32],double do_L1[][32],double snr_L1[][32],double lli_L1[][32],double ssi_L1[][32],
+void RINEX_OBS::setObsOut(int sv_L1[][32], double pr_L1[][32],double precise_pr_L1[][32],double cp_L1[][32],double do_L1[][32],double snr_L1[][32],double lli_L1[][32],double ssi_L1[][32],
 						int sv_L2[][32], double pr_L2[][32],double precise_pr_L2[][32],double cp_L2[][32],double do_L2[][32],double snr_L2[][32],double lli_L2[][32],double ssi_L2[][32],
 						int sv_L5[][32], double pr_L5[][32],double cp_L5[][32],double do_L5[][32],double snr_L5[][32],double lli_L5[][32],double ssi_L5[][32],
 						int epochs) {

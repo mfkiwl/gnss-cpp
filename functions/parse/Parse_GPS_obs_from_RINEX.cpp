@@ -2,7 +2,7 @@
 #include <fstream>
 #include <algorithm>
 #include "Parse_GPS_obs_from_RINEX.hpp"
-#include "../structs/RINEX.hpp"
+#include "../structs/RINEX_OBS.hpp"
 #include "../Date_to_TOW.hpp"
 
 using namespace std;
@@ -17,9 +17,9 @@ vector<int> getSubStringIndexes(string str, string sub) {
 	return positions;
 }
 
-RINEX parse_GPS_obs_from_RINEX(string filename_obs, int start_time, int duration) {
+RINEX_OBS parse_GPS_obs_from_RINEX(string filename_obs, int start_time, int duration) {
 
-	RINEX out;
+	RINEX_OBS out;
 
 	ifstream readFile("data/"+filename_obs);
 

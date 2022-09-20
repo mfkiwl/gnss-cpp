@@ -1,12 +1,12 @@
-#ifndef RINEX_HPP
-#define RINEX_HPP
+#ifndef RINEX_OBS_HPP
+#define RINEX_OBS_HPP
 
 #include <vector>
 #include <string>
 
 using namespace std;
 
-class RINEX {
+class RINEX_OBS {
 	public:
 		struct {
 			vector<string> *type;
