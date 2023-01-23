@@ -1,51 +1,14 @@
 #include <algorithm>
-#include<iostream>
+#include <iostream>
 #include <iterator>
-#include<math.h>
+#include <math.h>
 
-#include "functions/parse/Parse_GPS_obs_from_RINEX.hpp"
-#include "functions/parse/Parse_GPS_nav_from_RINEX.hpp"
 #include "functions/Date_to_TOW.hpp"
 #include "functions/structs/RINEX_OBS.hpp"
 #include "functions/structs/RINEX_NAV.hpp"
 #include "functions/pv_ECEF_to_NED.hpp"
-
-struct WLS_config{
-	double pseudo_range_SD;
-	double range_rate_SD;
-	int PRR_use;
-};
-
-struct GNSS_config {
-	string obs_name;
-	int start_time;
-	int duration;
-	string nav_name;
-	int nav_rinex_version;
-	double init_est_r_ea_e[3];
-	double init_est_v_ea_e[3];
-	int no_sat;
-	double mask_angle;
-	double car_freq_L1;
-	double car_freq_L2;
-	double lambda_L1;
-	double lambda_L2;
-	int sim_mode;
-	int P1_use;
-	int P2_use;
-};
-
-struct GNSS_tropo {
-	int model;
-	int StatusFlag;
-};
-
-struct GNSS_data {
-	GNSS_config config;
-	RINEX_OBS rinex_obs;
-	RINEX_NAV rinex_nav;
-	GNSS_tropo tropo;
-};
+#include "functions/structs/Structs.hpp"
+#include "functions/GNSS_WLS_PR_PRR_innov_test.hpp"
 
 int main() {
 
@@ -104,6 +67,24 @@ int main() {
 
 	struct NED ned_r_v;
 	ned_r_v = pv_ECEF_to_NED(GNSS_data.config.init_est_r_ea_e, GNSS_data.config.init_est_v_ea_e);;
+
+	int no_epochs = GNSS_data.rinex_obs.obs.iTOW.size();
+	double in_profile[no_epochs][10];
+	for(int i = 0; i < no_epochs; i++) {
+		in_profile[i][0] = GNSS_data.rinex_obs.obs.iTOW[i];
+		in_profile[i][1] = ned_r_v.L_b;
+		in_profile[i][2] = ned_r_v.lambda_b;
+		in_profile[i][3] = ned_r_v.h_b;
+		in_profile[i][4] = 0;
+		in_profile[i][5] = 0;
+		in_profile[i][6] = 0;
+		in_profile[i][7] = 0;
+		in_profile[i][8] = 0;
+		in_profile[i][9] = 0;
+	}
+
+	struct GNSS_WLS GNSS_WLS;
+	GNSS_WLS = GNSS_WLS_PR_PRR_innov_test(in_profile, no_epochs, GNSS_data, WLS_config);
 
 	return 0;
 }
