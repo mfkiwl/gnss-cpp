@@ -61,6 +61,8 @@ class RINEX_NAV {
 			vector<vector<double>> IODC;
 			vector<vector<double>> t_of_msg;
 			vector<vector<double>> fitting_period;
+			vector<double> latency_of_eph;
+			int StatusFlag;
 		} eph;
 
 

@@ -356,6 +356,7 @@ RINEX_OBS parse_GPS_obs_from_RINEX(string filename_obs, int start_time, int dura
 
 	out.setTotalSvNum(total_SVnum, size);
 	out.setTimeMessage(y, m, d, h, min, s, itow, size);
+	out.setSvNumLx(numSV_L1, numSV_L2, numSV_L5, size);
 	out.setObsOut(sv_L1,pr_L1,precise_pr_L1,cp_L1,do_L1,snr_L1,lli_L1,ssi_L1,
 			sv_L2,pr_L2,precise_pr_L2,do_L2,cp_L2,snr_L2,lli_L2,ssi_L2,
 			sv_L5,pr_L5,do_L5,cp_L5,snr_L5,lli_L5,ssi_L5, size);

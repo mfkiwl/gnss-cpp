@@ -10,6 +10,9 @@ GNSS_Test_11: GNSS_Test_11.o \
 	GNSS_WLS_PR_PRR_innov_test.o \
 	Euler_to_CTM.o \
 	Get_GNSS_data.o \
+	Closest_ephemeris.o \
+	Eph_SVi_in_file.o \
+	Log_closest_eph_SVi.o \
 	RINEX_OBS.o \
 	RINEX_NAV.o
 	$(CC) $(CFLAGS) -o GNSS_Test_11 GNSS_Test_11.o \
@@ -20,6 +23,9 @@ GNSS_Test_11: GNSS_Test_11.o \
 		GNSS_WLS_PR_PRR_innov_test.o \
 		Euler_to_CTM.o \
 		Get_GNSS_data.o \
+		Closest_ephemeris.o \
+		Eph_SVi_in_file.o \
+		Log_closest_eph_SVi.o \
 		RINEX_OBS.o \
 		RINEX_NAV.o
 	rm -f *.o functions/*.o functions/parse/*.o functions/structs/*.o
@@ -76,5 +82,15 @@ RINEX_NAV.o: functions/structs/RINEX_NAV.cpp
 Euler_to_CTM.o: functions/Euler_to_CTM.cpp
 	$(CC) $(CFLAGS) -c functions/Euler_to_CTM.cpp
 
-Get_GNSS_data.o: functions/Get_GNSS_data.cpp
+Get_GNSS_data.o: functions/Get_GNSS_data.cpp functions/Closest_ephemeris.o
 	$(CC) $(CFLAGS) -c functions/Get_GNSS_data.cpp
+
+Closest_ephemeris.o: functions/Closest_ephemeris.cpp functions/Eph_SVi_in_file.cpp functions/Log_closest_eph_SVi.o
+	$(CC) $(CFLAGS) -c functions/Closest_ephemeris.cpp
+
+Eph_SVi_in_file.o: functions/Eph_SVi_in_file.cpp
+	$(CC) $(CFLAGS) -c functions/Eph_SVi_in_file.cpp
+
+Log_closest_eph_SVi.o: functions/Log_closest_eph_SVi.cpp
+	$(CC) $(CFLAGS) -c functions/Log_closest_eph_SVi.cpp
+
